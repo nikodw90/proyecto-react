@@ -1,19 +1,22 @@
 import './style.css'
 
+
 export function MenuComponet() {
     return(
-        <ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" >Inicio</a>
+      
+        <ul className="nav nav-tabs menu">
+          <img className="logo" src="./imagenes/logo.jpg"/>
+  <li className="nav-item">
+    <a className="nav-link active" aria-current="page" href="javascript:void(0)">Inicio</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" >Productos</a>
+  <li className="nav-item">
+    <a className="nav-link" >Productos</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" >Carrito</a>
+  <li className="nav-item">
+    <a className="nav-link" >Contacto</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link disabled"  tabindex="-1" aria-disabled="true">Disabled</a>
+  <li className="nav-item">
+    <a className="nav-link disabled"  tabindex="-1" aria-disabled="true">Carrito</a>
   </li>
 </ul>
     );
