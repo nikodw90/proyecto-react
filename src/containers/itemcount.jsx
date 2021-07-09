@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Button from 'react-bootstrap/Button'
 
 
 // const ButtonComponet = () => {
@@ -9,19 +10,19 @@ export const ButtonContador = () => {
         const [contador, setContador] = useState(0)
 
         if(contador == -1){
-            // alert('no puede ser menor que 0')
+            alert('no puede ser menor que 0')
         }
         if(contador == 5){
-            // alert('se supero el stock de el producto')
+            alert('se supero el stock de el producto')
         }
         
         
     return (
             
         <section>
-            <button type="button" className="btn btn-primary" onClick={() => {setContador(contador-1)}}>-</button>
+            <Button variant="primary" onClick={() => {setContador(contador-1)}}>-</Button>
             {contador}
-            <button type="button" className="btn btn-primary" onClick={() => {setContador(contador+1)}}>+</button>
+            <Button variant="primary" onClick={() => {setContador(contador+1)}}>+</Button>
         </section>
 
     )

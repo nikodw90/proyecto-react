@@ -1,23 +1,21 @@
 import './style.css'
+import { Nav } from 'react-bootstrap';
 
 
 export function MenuComponet() {
     return(
-      
-        <ul className="nav nav-tabs menu">
-          <img className="logo" src="./imagenes/logo.jpg"/>
-  <li className="nav-item">
-    <a className="nav-link active" aria-current="page" href="javascript:void(0)">Inicio</a>
-  </li>
-  <li className="nav-item">
-    <a className="nav-link" >Productos</a>
-  </li>
-  <li className="nav-item">
-    <a className="nav-link" >Contacto</a>
-  </li>
-  <li className="nav-item">
-    <a className="nav-link disabled"  tabindex="-1" aria-disabled="true">Carrito</a>
-  </li>
-</ul>
+      <Nav variant="pills" defaultActiveKey="/home">
+        <img className="logo" src="./imagenes/logo.jpg"/><img/>
+      <Nav.Item>
+        <Nav.Link href="/home">Inicio</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link eventKey="link-1">Productos</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link eventKey="link-2">Carrito</Nav.Link>
+      </Nav.Item>
+    </Nav>
+        
     );
 }
