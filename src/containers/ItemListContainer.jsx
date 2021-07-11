@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import { CardComponet } from "./componets/CardComponent"
+import { useEffect, useState } from "react";
+import { ItemCard } from "../componets/ItemCard";
 
 
 export function ItemListContainer (){
@@ -8,7 +8,7 @@ export function ItemListContainer (){
 
     useEffect(() => {
 
-        async function getProducts(){
+     async function getProducts(){
            const response = await fetch('https://api.mercadolibre.com/sites/MLC/search?q=libros')
            const data = await response.json()
            setItems(data.results)
@@ -29,7 +29,7 @@ export function ItemListContainer (){
                 items.map(producto => {
                     return(
                         <div>
-                           <CardComponet name={producto.title} price={producto.price} img={producto.thumbnail}/>
+                           <ItemCard name={producto.title} price={producto.price} img={producto.thumbnail}/>
                         </div>
                     )
                 

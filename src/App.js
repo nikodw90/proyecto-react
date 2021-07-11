@@ -1,16 +1,18 @@
 import './App.css';
 import { MenuComponet } from './componets/navbar';
-import { ItemListContainer } from './ItemListContainer'
+// import { ItemListContainer } from "./containers/ItemListContainer"
 import "bootstrap/dist/css/bootstrap.min.css"
-import { CardComponet} from'./componets/CardComponent'
+// import { ItemCard } from "./componets/ItemCard"
+import { ItemDetailContainer } from "./containers/ItemDetailContainer"
 
 function App() {
   return (
     <div className="App">
         
         <MenuComponet/> 
-        <CardComponet/>
-        <ItemListContainer/>
+        {/* <ItemCard/>
+        <ItemListContainer/> */}
+        <ItemDetailContainer/>
         
 
         

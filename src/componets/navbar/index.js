@@ -4,6 +4,7 @@ import { Nav } from 'react-bootstrap';
 
 export function MenuComponet() {
     return(
+      
       <Nav variant="pills" defaultActiveKey="/home">
         <img className="logo" src="./imagenes/logo.jpg"/><img/>
       <Nav.Item>

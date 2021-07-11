@@ -9,10 +9,10 @@ import Button from 'react-bootstrap/Button'
 export const ButtonContador = () => {
         const [contador, setContador] = useState(0)
 
-        if(contador == -1){
+        if(contador === -1){
             alert('no puede ser menor que 0')
         }
-        if(contador == 5){
+        if(contador === 5){
             alert('se supero el stock de el producto')
         }
         
