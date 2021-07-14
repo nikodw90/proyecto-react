@@ -19,11 +19,11 @@ export const ItemDetailContainer = () => {
     }, [])
 
     return(
-        <>
-        {unidadMock ?
-          <ItemDetail key={unidadMock.id} nombre={unidadMock.title} img={unidadMock.thumbnail} precio={unidadMock.price}/>
-         : <p>Loading...</p>}
-         </>
+        <div className="card">
+            {unidadMock ?
+                <ItemDetail key={unidadMock.id} nombre={unidadMock.title} img={unidadMock.thumbnail} precio={unidadMock.price}/>
+            : <p>Loading...</p>}
+         </div>
     )
 
 }

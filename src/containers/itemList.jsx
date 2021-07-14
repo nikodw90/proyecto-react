@@ -1,15 +1,16 @@
+import React from 'react';
 import { ItemCard } from "../componets/ItemCard";
 
 
-export function ItemList( { items }) {
+export const ItemList = ( { productos }) => {
     
     return(
 
         <div>
             {
-                items.map(producto => {
+                productos.map(producto => {
                     return(
-                        <div>
+                        <div className="carditemlist">
                            <ItemCard name={producto.title} price={producto.price} img={producto.thumbnail}/>
                         </div>
                     )

@@ -1,6 +1,7 @@
-h1{
-    text-align: center;
-}
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box; }
 div {
     background-color: rgb(179, 176, 170);
 }

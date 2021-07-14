@@ -2,10 +2,6 @@ import { useState } from "react"
 import Button from 'react-bootstrap/Button'
 
 
-// const ButtonComponet = () => {
-//     return <button>botoncito</button>
-// }
-
 export const ButtonContador = () => {
         const [contador, setContador] = useState(0)
 
