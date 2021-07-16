@@ -11,7 +11,7 @@ export const ItemList = ( { productos }) => {
                 productos.map(producto => {
                     return(
                         <div className="carditemlist">
-                           <ItemCard name={producto.title} price={producto.price} img={producto.thumbnail}/>
+                           <ItemCard id={producto.id} name={producto.title} price={producto.price} img={producto.thumbnail}/>
                         </div>
                     )
                 

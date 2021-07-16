@@ -8,12 +8,12 @@ export function MenuComponet() {
         
       <div className="navbar">
         <div>
-          <Link to={"/home"} ><h1>venta de libros</h1></Link>
+          <Link to={"/"} ><h1>venta de libros</h1></Link>
         </div>
            <Nav variant="pills" defaultActiveKey="/home">              
-             <Link to={"/home"}><img className="logo" src="./imagenes/logo.jpg"/><img/></Link>
+             <Link to={"/"}><img className="logo" src="./imagenes/logo.jpg"/><img/></Link>
            <Nav.Item>
-             <Nav.Link href="/home">Inicio</Nav.Link>
+             <Nav.Link href="/">Inicio</Nav.Link>
            </Nav.Item>
            <Nav.Item>
              <Nav.Link href="/detalle/:productoId">Productos</Nav.Link>

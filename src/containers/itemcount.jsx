@@ -1,24 +1,43 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import Button from 'react-bootstrap/Button'
+import { Link } from "react-router-dom"
+import {cartContex} from "../componets/cartContex"
 
 
-export const ButtonContador = () => {
+export const ButtonContador = ({onAdd}) => {
         const [contador, setContador] = useState(0)
 
-        if(contador === -1){
-            alert('no puede ser menor que 0')
-        }
-        if(contador === 5){
-            alert('se supero el stock de el producto')
+        const [open , setOpen] =useState(false)
+
+        const anadir = useContext(cartContex)
+
+        function agregar(nombre, precio){
+            anadir (nombre, precio)
+            setOpen(true)
+
         }
         
         
     return (
             
         <section>
+            
             <Button variant="primary" onClick={() => {setContador(contador-1)}}>-</Button>
             {contador}
             <Button variant="primary" onClick={() => {setContador(contador+1)}}>+</Button>
+            
+            { !open ? 
+            
+                (<div>
+                <Button variant="primary" onClick={() => agregar(onAdd)} >Agregar</Button>
+                </div>) :
+                (<div><Link to="/cart">
+                <Button variant="primary">Finalizar Compra</Button>
+                </Link>    
+                </div>)
+                
+            }
+
         </section>
 
     )

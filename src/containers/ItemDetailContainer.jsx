@@ -4,14 +4,19 @@ import { ItemDetail } from "./ItemDetail";
 
 export const ItemDetailContainer = () => {
     const [unidadMock, setUnidadMock] = useState();
+    
 
     useEffect(() => {
+
+        
+
         async function productos () {
             const response = await fetch('https://api.mercadolibre.com/sites/MLC/search?q=libros')
             const data = await response.json()
-            setUnidadMock (data.results[1])
-
+            setUnidadMock (data.results[0])
+            
         }
+
         setTimeout(() =>{
             productos()
         },4000)
@@ -21,7 +26,7 @@ export const ItemDetailContainer = () => {
     return(
         <div className="card">
             {unidadMock ?
-                <ItemDetail key={unidadMock.id} nombre={unidadMock.title} img={unidadMock.thumbnail} precio={unidadMock.price}/>
+                <ItemDetail id={unidadMock.id} nombre={unidadMock.title} img={unidadMock.thumbnail} precio={unidadMock.price}/>
             : <p>Loading...</p>}
          </div>
     )

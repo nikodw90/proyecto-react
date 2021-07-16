@@ -6,13 +6,32 @@ import { ItemDetailContainer } from "./containers/ItemDetailContainer"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 
 function App() {
+
+  // useEffect(() => {
+
+    
+  //   async function getProducts(){
+  //         const response = await fetch(`https://api.mercadolibre.com/sites/MLC/search?q=libros`)
+  //         const data = await response.json()
+  //         setItems(data.results)
+              
+  //      }
+
+  //      getProducts()
+
+       
+
+  //  }, [productId])
+
+
+
   return (
         
     <div className="App">
         <BrowserRouter>
           <MenuComponet/> 
              <Switch>
-               <Route exact path={'/home'}>
+               <Route exact path={'/'}>
                   <ItemListContainer/>
                </Route>
                <Route path={ '/detalle/:productId'}>

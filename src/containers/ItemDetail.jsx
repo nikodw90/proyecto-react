@@ -1,18 +1,26 @@
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
 import { ButtonContador } from '../containers/itemcount'
+import { useState } from 'react'
 
 export const ItemDetail = ({nombre, precio, img}) =>{
+
+    const [carrito, setcarrito] = useState()
+
+    function onAdd(){
+        setcarrito([...carrito, {nombre, precio}])
+    }
+      
     return(
         <Card style={{ width: '18rem' }}>
             <Card.Img  src={img} />
             <Card.Body>
                 <Card.Title>{nombre}</Card.Title>
                 <Card.Text>
-                    {precio}
+                    {"$" +" "+ precio}
                 </Card.Text>
-            <Button variant="primary">Agregar</Button>
-            <Button variant="primary"><ButtonContador/></Button>
+            
+            <ButtonContador onclick={onAdd}/>
+
             </Card.Body>
         </Card>
     )
