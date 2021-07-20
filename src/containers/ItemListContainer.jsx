@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import {ItemList} from "./itemList";
 import './style.css'
-import { useParams } from "react-router";
 
-
-
-export const ItemListContainer = ({productos}) =>{
+export const ItemListContainer = () =>{
     const [ items, setItems ] = useState([])
-    const {productId} = useParams()
+    
 
     useEffect(() => {
 
@@ -31,7 +28,8 @@ export const ItemListContainer = ({productos}) =>{
         
             <div className="card">
              
-             {<ItemList productos={items} />} 
+             {<ItemList productos={items}/> }
+             
                 
             </div>
     )

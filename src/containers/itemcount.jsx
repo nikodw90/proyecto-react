@@ -12,7 +12,6 @@ export const ButtonContador = ({onAdd}) => {
         const anadir = useContext(cartContex)
 
         function agregar(nombre, precio){
-            anadir (nombre, precio)
             setOpen(true)
 
         }

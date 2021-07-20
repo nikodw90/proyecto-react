@@ -1,32 +1,37 @@
 import { useEffect, useState } from "react";
 import { ItemDetail } from "./ItemDetail";
+import { useParams } from "react-router";
 
 
-export const ItemDetailContainer = () => {
-    const [unidadMock, setUnidadMock] = useState();
+
+export const ItemDetailContainer = ({items}) => {
+    const [detail, setDetail] = useState();
+    const {productId} = useParams()
+
     
 
     useEffect(() => {
 
-        
 
-        async function productos () {
-            const response = await fetch('https://api.mercadolibre.com/sites/MLC/search?q=libros')
-            const data = await response.json()
-            setUnidadMock (data.results[0])
-            
+        console.log(productId)
+
+        if(productId){
+
+            const category = items.find(product=>product.id === productId)
+            setDetail(category)
         }
 
-        setTimeout(() =>{
-            productos()
-        },4000)
 
-    }, [])
+
+    }, [productId, items])
+
+
+
 
     return(
         <div className="card">
-            {unidadMock ?
-                <ItemDetail id={unidadMock.id} nombre={unidadMock.title} img={unidadMock.thumbnail} precio={unidadMock.price}/>
+            {detail ?
+                <ItemDetail key={detail.id} id={detail.id} nombre={detail.title} img={detail.thumbnail} precio={detail.price}/>
             : <p>Loading...</p>}
          </div>
     )

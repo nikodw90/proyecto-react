@@ -3,6 +3,7 @@ import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
+
 export function MenuComponet() {
     return(
         
@@ -13,13 +14,10 @@ export function MenuComponet() {
            <Nav variant="pills" defaultActiveKey="/home">              
              <Link to={"/"}><img className="logo" src="./imagenes/logo.jpg"/><img/></Link>
            <Nav.Item>
-             <Nav.Link href="/">Inicio</Nav.Link>
+             <Nav.Link variant="primary" href="/">Inicio</Nav.Link>
            </Nav.Item>
            <Nav.Item>
-             <Nav.Link href="/detalle/:productoId">Productos</Nav.Link>
-           </Nav.Item>
-           <Nav.Item>
-             <Nav.Link href="/carrito">Carrito</Nav.Link>
+             <Nav.Link variant="primary" href="/carrito">Carrito</Nav.Link>
            </Nav.Item>
          </Nav>
      </div>
