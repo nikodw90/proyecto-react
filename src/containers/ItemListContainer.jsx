@@ -4,6 +4,7 @@ import './style.css'
 
 export const ItemListContainer = () =>{
     const [ items, setItems ] = useState([])
+    // const [categories, setCategories] = useState([])
     
 
     useEffect(() => {
@@ -21,6 +22,8 @@ export const ItemListContainer = () =>{
         
 
     }, [])
+
+    
      
     
 

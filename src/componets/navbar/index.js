@@ -17,6 +17,12 @@ export function MenuComponet() {
              <Nav.Link variant="primary" href="/">Inicio</Nav.Link>
            </Nav.Item>
            <Nav.Item>
+                <Nav.Link variant="primary" href="/">Libros Infantiles</Nav.Link>
+           </Nav.Item>
+           <Nav.Item>
+                <Nav.Link variant="primary" href= "/">Libros Drama y comedia</Nav.Link>
+           </Nav.Item>
+           <Nav.Item>
              <Nav.Link variant="primary" href="/carrito">Carrito</Nav.Link>
            </Nav.Item>
          </Nav>

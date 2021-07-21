@@ -9,9 +9,10 @@ export const ButtonContador = ({onAdd}) => {
 
         const [open , setOpen] =useState(false)
 
-        const anadir = useContext(cartContex)
+        const { anadir } = useContext(cartContex)
 
-        function agregar(nombre, precio){
+        function agregar(nombre, precio, img, id){
+            anadir(nombre, precio, img, id)
             setOpen(true)
 
         }

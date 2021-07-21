@@ -13,8 +13,6 @@ export const ItemDetailContainer = ({items}) => {
     useEffect(() => {
 
 
-        console.log(productId)
-
         if(productId){
 
             const category = items.find(product=>product.id === productId)

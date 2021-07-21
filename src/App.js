@@ -4,7 +4,7 @@ import { ItemListContainer } from "./containers/ItemListContainer"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { ItemDetailContainer } from "./containers/ItemDetailContainer"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
-import { cartContex } from './componets/cartContex';
+import { ShopProvider } from './componets/cartContex';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -34,19 +34,22 @@ function App() {
   return (
         
     <div className="App">
-      <cartContex.Provider>
+      <ShopProvider>
           <BrowserRouter>
           <MenuComponet/> 
              <Switch>
                <Route exact path={'/'}>
                   <ItemListContainer/>
                </Route>
+               {/* <Route exact path={'/category/:categoryId'}>
+                  <ItemListContainer/>
+               </Route> */}
                <Route path={ '/detalle/:productId'}>
                   <ItemDetailContainer items={items}/>
                 </Route>
              </Switch>
           </BrowserRouter>
-        </cartContex.Provider>
+        </ShopProvider>
         
 
         
