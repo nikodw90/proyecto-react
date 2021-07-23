@@ -41,8 +41,8 @@ function App() {
                <Route exact path={'/'}>
                   <ItemListContainer/>
                </Route>
-               {/* <Route exact path={'/category/:categoryId'}>
-                  <ItemListContainer/>
+               {/* <Route exact path={'/detalle/:categoryId'}>
+                  <ItemListContainer categorys={items}/>
                </Route> */}
                <Route path={ '/detalle/:productId'}>
                   <ItemDetailContainer items={items}/>

@@ -1,30 +1,30 @@
 import { useState, useContext } from "react"
 import Button from 'react-bootstrap/Button'
 import { Link } from "react-router-dom"
-import {cartContex} from "../componets/cartContex"
+import ShopProvider, { cartContex } from "../componets/cartContex"
 
 
-export const ButtonContador = ({onAdd}) => {
-        const [contador, setContador] = useState(0)
+export const ButtonContador = ({onAdd, sumar, restar, contador }) => {
 
         const [open , setOpen] =useState(false)
 
-        const { anadir } = useContext(cartContex)
+        const { anadir } = useContext(ShopProvider, cartContex)
 
-        function agregar(nombre, precio, img, id){
-            anadir(nombre, precio, img, id)
+        function agregar(nombre, precio, img, id, contador){
+            anadir(nombre, precio, img, id, contador)
             setOpen(true)
 
         }
+     
         
         
     return (
             
         <section>
             
-            <Button variant="primary" onClick={() => {setContador(contador-1)}}>-</Button>
+            <Button variant="primary" onClick={restar}>-</Button>
             {contador}
-            <Button variant="primary" onClick={() => {setContador(contador+1)}}>+</Button>
+            <Button variant="primary" onClick={sumar}>+</Button>
             
             { !open ? 
             

@@ -1,27 +1,44 @@
 import { useContext } from 'react'
-import Card from 'react-bootstrap/Card'
-import { ShopProvider } from '../cartContex'
+import Button from 'react-bootstrap/Button'
+import { cartContex } from '../cartContex'
+import { Link } from 'react-router-dom'
 
 
-export const cart = () =>{
 
-    const {borrar, anadir} = useContext (ShopProvider)
+export const Cart = () =>{
 
-    const {nombre, precio,} = anadir
+    const {cart, limpiarCarrito, total} = useContext(cartContex)
 
-    retur(
-        <div>
+    return(
+        
+        <div className="cart">
+            { 
+            ( <>
+            <h1>El carrito esta vacio</h1>
+                <Link to={"/"}>
+                <Button onClick={limpiarCarrito} variant="contained" color="primary">Volver a Comprar</Button>
+                </Link>
+            </>)}
+
+            <div className="cartItems">
+                { cart.length > 0 && cart.map( product => <CartItem key={product.id} 
+                id={product.id} name={product.name} image={product.image} price={product.price} 
+                amount={product.amount} />)}
+            </div>
 
 
-          <Card style={{ width: '18rem' }}>
-            <Card.Body>
-            <Card.Title>{nombre}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{precio}</Card.Subtitle>
-                 <Card.Link href="#">ir a comprar</Card.Link>
-            <Card.Link href="#">{borrar}</Card.Link>
-            </Card.Body>
-                </Card>
+            { cart.length > 0 &&
+            <>
+            <h2>$ {total}</h2>
+            <div className="cartItems__buttons">
+                <Button onClick={limpiarCarrito} variant="contained" color="primary">Vaciar Carrito</Button>
+                <Button variant="contained" color="primary">Comprar </Button>
+            </div>
+            </>}
+
+
         </div>
+        
     )
 
 }
