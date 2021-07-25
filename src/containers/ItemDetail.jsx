@@ -15,7 +15,6 @@ export const ItemDetail = ({id, nombre, precio, img, stock}) =>{
 
     function onAdd(){
         setcarrito([...carrito, {nombre, precio, img, id}])
-        console.log(carrito)
     }
 
     function sumar (){

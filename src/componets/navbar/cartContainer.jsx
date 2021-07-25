@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import Button from 'react-bootstrap/Button'
 import { cartContex } from '../cartContex'
 import { Link } from 'react-router-dom'
+import {CartItem } from '../CartItem'
 
 
 
@@ -20,17 +21,17 @@ export const Cart = () =>{
                 </Link>
             </>)}
 
-            <div className="cartItems">
-                { cart.length > 0 && cart.map( product => <CartItem key={product.id} 
-                id={product.id} name={product.name} image={product.image} price={product.price} 
-                amount={product.amount} />)}
+            <div>
+                { cart.length > 0 && cart.map( product => <CartItem  
+                id={product.id} nombre={product.name} img={product.image} precio={product.price} 
+                contador={product.amount} />)}
             </div>
 
 
             { cart.length > 0 &&
             <>
             <h2>$ {total}</h2>
-            <div className="cartItems__buttons">
+            <div>
                 <Button onClick={limpiarCarrito} variant="contained" color="primary">Vaciar Carrito</Button>
                 <Button variant="contained" color="primary">Comprar </Button>
             </div>

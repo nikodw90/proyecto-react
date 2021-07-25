@@ -7,7 +7,7 @@ import { createContext } from "react";
 export const cartContex = createContext()
 
 export const ShopProvider = ({children}) => {
-    const [cart, setCart] = useState()
+    const [cart, setCart] = useState([])
     const [cantidad, setCantidad]=useState(0)
     const [total, setTotal] = useState()
 
@@ -40,12 +40,13 @@ export const ShopProvider = ({children}) => {
     function anadir(nombre, img, precio, contador, id) {
         
         if (estaEnCarrito(id)){
+            
             // Encuentro el producto
-            const productoA = cart.filter(p => p.id === id)
+            const productoA = cart.find(p => p.id === id)
             // Armo la nueva cantidad de productos
             const nuevaCantidad = productoA.amount + contador
             // Armo el nuevo producto cambiandole la cantidad
-            const productoB = { id: productoA.id, name: productoA.name, image: productoA.image, price: productoA.price, amount: nuevaCantidad}
+            const productoB = { id:productoA.id, nombre:productoA.nombre, img:productoA.img, precio:productoA.precio, amount: nuevaCantidad}
             // Elimino el antiguo producto para no tener duplicados
             const carroAntiguo = cart.filter(product => product.id =! id)
             // Agrego el nuevo producto
@@ -54,7 +55,7 @@ export const ShopProvider = ({children}) => {
             setCart(carroNuevo)
         } else {
             // Guardo en el estado cart el producto que eligió y la cantidad
-            const newItem = { id: id.id, name: nombre.name, image: img.image, price: precio.price, amount: contador }
+            const newItem = { id:id, nombre:nombre, img:img, precio:precio, amount: contador}
             setCart([...cart, newItem])
         }
     }
@@ -64,12 +65,19 @@ export const ShopProvider = ({children}) => {
         setCantidad(0)
     }
 
+    function eliminarProducto(id){
+        // Elimino el producto por Id filtrando y quedandome con todos los que no tienen el id seleccionado
+        const newCart = cart.filter(product => product.id !== id)
+        // Guardo el nuevo carrito
+        setCart(newCart)
+    }
+
 
 
     return( 
 
                 
-                <cartContex.Provider value = {{anadir, cart, cantidad, total, limpiarCarrito}}>
+                <cartContex.Provider value = {{anadir, cart, cantidad, total, limpiarCarrito, eliminarProducto}}>
                     {children}
                 </cartContex.Provider>
     )

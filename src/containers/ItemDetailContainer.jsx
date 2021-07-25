@@ -29,7 +29,7 @@ export const ItemDetailContainer = ({items}) => {
     return(
         <div className="card">
             {detail ?
-                <ItemDetail key={detail.id} id={detail.id} nombre={detail.title} img={detail.thumbnail} 
+                <ItemDetail key={detail.id} ID={detail.id} nombre={detail.title} img={detail.thumbnail} 
                 precio={detail.price} stock={detail.installments.quantity}/>
             : <p>Loading...</p>}
          </div>

@@ -6,6 +6,7 @@ import { ItemDetailContainer } from "./containers/ItemDetailContainer"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 import { ShopProvider } from './componets/cartContex';
 import { useEffect, useState } from 'react';
+import { Cart } from "./componets/navbar/cartContainer"
 
 function App() {
 
@@ -46,6 +47,9 @@ function App() {
                </Route> */}
                <Route path={ '/detalle/:productId'}>
                   <ItemDetailContainer items={items}/>
+                </Route>
+                <Route path={'/cart'}>
+                   <Cart/>
                 </Route>
              </Switch>
           </BrowserRouter>
