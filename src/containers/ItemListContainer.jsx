@@ -1,46 +1,29 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {ItemList} from "./itemList";
-import './style.css'
+import { Firestore } from "../firebase";
+import { ItemList } from "./itemList";
+import "./style.css";
 
-export const ItemListContainer = () =>{
-    const [ items, setItems ] = useState([])
-    // const {categoryId} = useParams()
-    
+export const ItemListContainer = ({ fireItems }) => {
+  const [items, setItems] = useState([]);
+  const { categoryId } = useParams();
 
-    useEffect(() => {
+  useEffect(() => {
+    const db = Firestore;
+    const collection = db.collection("products");
+    const query = collection.where("categories", "==", categoryId).get();
+    query.then((result) => {
+      setItems(result.docs.map((p) => ({ id: p.id, ...p.data() })));
+    });
 
-    
-     async function getProducts(){
-           const response = await fetch(`https://api.mercadolibre.com/sites/MLC/search?q=libros`)
-           const data = await response.json()
-           setItems(data.results)
-               
-        }
+    setItems(fireItems);
+  }, [categoryId, fireItems]);
 
-        getProducts()
+  return (
+    <div className="card">
+      {fireItems.length > <ItemList productos={items} />}
+    </div>
+  );
+};
 
-        // if(categoryId){
-        //     const category = items.filter(product => product.categoryId === categoryId)
-        //     setItems(category)
-        //     }
-        
-
-    }, [])
-
-    
-     
-    
-
-    return(
-        
-            <div className="card">
-             
-             {<ItemList productos={items}/> }
-             
-                
-            </div>
-    )
-}
-
-export default ItemListContainer
+export default ItemListContainer;

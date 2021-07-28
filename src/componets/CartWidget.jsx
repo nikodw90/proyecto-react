@@ -1,18 +1,18 @@
 import { useContext } from "react";
 import { cartContex } from "./cartContex";
+import './CartWidget.css';
 
 
-
-function CartWidget (){
+export function CartWidget (){
     const {cantidad} = useContext(cartContex)
 
     return(
 
         <div>
-            {cantidad 
-
-            }
-        
+            { cantidad > 0 && 
+            <>
+              <h4>{cantidad}</h4>
+            </>}
         </div>
     )
     

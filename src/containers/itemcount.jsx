@@ -1,44 +1,41 @@
-import { useState, useContext } from "react"
-import Button from 'react-bootstrap/Button'
-import { Link } from "react-router-dom"
-import { cartContex } from "../componets/cartContex"
+import { useState, useContext } from "react";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+import { cartContex } from "../componets/cartContex";
 
+export const ButtonContador = ({ product, sumar, restar, contador }) => {
+  const [open, setOpen] = useState(false);
 
-export const ButtonContador = ({onAdd, sumar, restar, contador }) => {
+  const { anadir } = useContext(cartContex);
 
-        const [open , setOpen] =useState(false)
+  function agregar(product, contador) {
+    anadir(product, contador);
+    setOpen(true);
+  }
 
-        const { anadir } = useContext(cartContex)
+  return (
+    <section>
+      <Button variant="primary" onClick={restar}>
+        -
+      </Button>
+      {contador}
+      <Button variant="primary" onClick={sumar}>
+        +
+      </Button>
 
-        function agregar(nombre, precio, img, id, contador){
-            anadir (nombre, precio, img, id, contador)
-            setOpen(true)
-
-        }
-     
-        
-        
-    return (
-            
-        <section>
-            
-            <Button variant="primary" onClick={restar}>-</Button>
-            {contador}
-            <Button variant="primary" onClick={sumar}>+</Button>
-            
-            { !open ? 
-            
-                (<div>
-                <Button variant="primary" onClick={() => agregar(onAdd)} >Agregar</Button>
-                </div>) :
-                (<div><Link to="/cart">
-                <Button variant="primary">Finalizar Compra</Button>
-                </Link>    
-                </div>)
-                
-            }
-
-        </section>
-
-    )
-}
+      {!open ? (
+        <div>
+          <Button variant="primary" onClick={() => agregar(product, contador)}>
+            Agregar
+          </Button>
+        </div>
+      ) : (
+        <div>
+          <Link to={"/cart"}>
+            <Button variant="primary">Finalizar Compra</Button>
+          </Link>
+        </div>
+      )}
+    </section>
+  );
+};

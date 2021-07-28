@@ -2,40 +2,31 @@ import { useEffect, useState } from "react";
 import { ItemDetail } from "./ItemDetail";
 import { useParams } from "react-router";
 
+export const ItemDetailContainer = ({ items }) => {
+  const [fireDetail, setFireDetail] = useState();
+  const { productId } = useParams();
 
+  useEffect(() => {
+    if (productId) {
+      const category = items.find((product) => product.id === productId);
+      setFireDetail(category);
+    }
+  }, [productId, items]);
 
-export const ItemDetailContainer = ({items}) => {
-    const [detail, setDetail] = useState();
-    const {productId} = useParams()
-
-    
-
-    useEffect(() => {
-
-
-        if(productId){
-
-            const category = items.find(product=>product.id === productId)
-            setDetail(category)
-        }
-
-
-
-    }, [productId, items])
-
-
-
-
-    return(
-        <div className="card">
-            {detail ?
-                <ItemDetail key={detail.id} ID={detail.id} nombre={detail.title} img={detail.thumbnail} 
-                precio={detail.price} stock={detail.installments.quantity}/>
-            : <p>Loading...</p>}
-         </div>
-    )
-
-}
-
-
-    
+  return (
+    <div className="card">
+      {fireDetail ? (
+        <ItemDetail
+          key={fireDetail.id}
+          id={fireDetail.id}
+          nombre={fireDetail.title}
+          img={fireDetail.thumbnail}
+          precio={fireDetail.price}
+          stock={fireDetail.stock}
+        />
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
+  );
+};

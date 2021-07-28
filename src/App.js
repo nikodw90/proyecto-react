@@ -7,27 +7,27 @@ import { BrowserRouter, Switch, Route } from "react-router-dom"
 import { ShopProvider } from './componets/cartContex';
 import { useEffect, useState } from 'react';
 import { Cart } from "./componets/navbar/cartContainer"
+import { Firestore } from './firebase';
 
 function App() {
 
-  const [ items, setItems ] = useState([])
+  const [ fireItems, setFireItems ] = useState([])
     
 
   useEffect(() => {
 
   
-   async function getProducts(){
-         const response = await fetch(`https://api.mercadolibre.com/sites/MLC/search?q=libros`)
-         const data = await response.json()
-         setItems(data.results)
-             
-      }
-
-      getProducts()
+   const db = Firestore
+   const collection = db.collection('products')
+   const response = collection.get()
+      response
+      .then((result) =>{
+         setFireItems(result.docs.map(p => ({id: p.id, ...p.data()})))
+      })
 
       
 
-  }, [])
+  }, [fireItems])
 
 
 
@@ -40,13 +40,13 @@ function App() {
           <MenuComponet/> 
              <Switch>
                <Route exact path={'/'}>
-                  <ItemListContainer/>
+                  <ItemListContainer fireItems={fireItems}/>
                </Route>
-               {/* <Route exact path={'/detalle/:categoryId'}>
-                  <ItemListContainer categorys={items}/>
-               </Route> */}
+               <Route exact path={'/detalle/:categoryId'}>
+                  <ItemListContainer fireItems={fireItems}/>
+               </Route>
                <Route path={ '/detalle/:productId'}>
-                  <ItemDetailContainer items={items}/>
+                  <ItemDetailContainer items={fireItems}/>
                 </Route>
                 <Route path={'/cart'}>
                    <Cart/>

@@ -1,6 +1,8 @@
 import './style.css'
 import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import CartWidget from '../CartWidget';
+
 
 
 
@@ -23,7 +25,7 @@ export function MenuComponet() {
                 <Nav.Link variant="primary" href= "/category/">Libros Drama y comedia</Nav.Link>
            </Nav.Item>
            <Nav.Item>
-             <Link to={"/cart"}><img src="./imagenes/widget.png" /></Link>
+             <Link className="cartWidget" to={"/cart"}><img src="./imagenes/widget.png" /><CartWidget/></Link>
            </Nav.Item>
          </Nav>
      </div>
