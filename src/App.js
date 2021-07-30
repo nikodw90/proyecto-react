@@ -7,7 +7,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom"
 import { ShopProvider } from './componets/cartContex';
 import { useEffect, useState } from 'react';
 import { Cart } from "./componets/navbar/cartContainer"
-import { Firestore } from './firebase';
+import { firestore } from './firebase';
 
 function App() {
 
@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
 
   
-   const db = Firestore
+   const db = firestore
    const collection = db.collection('products')
    const response = collection.get()
       response
