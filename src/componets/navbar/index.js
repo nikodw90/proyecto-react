@@ -22,7 +22,7 @@ export function MenuComponet() {
                 <Nav.Link variant="primary" href="/">Libros Infantiles</Nav.Link>
            </Nav.Item>
            <Nav.Item>
-                <Nav.Link variant="primary" href= '/category/categoryId' >Libros Drama y comedia</Nav.Link>
+                <Link to={`/category/categoryId` } >Libros Drama y comedia</Link>
            </Nav.Item>
            <Nav.Item>
              <Link className="cartWidget" to={"/cart"}><img src="./imagenes/widget.png" /><CartWidget/></Link>

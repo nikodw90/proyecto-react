@@ -23,11 +23,12 @@ function App() {
       response
       .then((result) =>{
          setFireItems(result.docs.map(p => ({id: p.id, ...p.data()})))
+         console.log(fireItems)
       })
 
       
 
-  }, [fireItems])
+  }, [])
 
 
 

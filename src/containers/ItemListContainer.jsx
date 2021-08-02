@@ -11,28 +11,24 @@ export const ItemListContainer = ({ fireItems }) => {
   
 
   useEffect(() => {
-
     if(categoryId){
-
     const db = firestore;
     const collection = db.collection('products');
     const query = collection.where('categories', "==", categoryId).get();
     query.then((result) => {
       setItems(result.docs.map((p) => ({ id: p.id, ...p.data() })));
     });
-
+    }else{
+      setItems(fireItems);
     }
-
-    setItems(fireItems);
-    
-
   }, [categoryId, fireItems]);
+  
 
   return (
     <div className="card">
-      {fireItems.length > <ItemList productos={items} />}
+      {items.length > <ItemList productos={items} />}
     </div>
-  );
+  )
 };
 
 export default ItemListContainer;
