@@ -8,7 +8,6 @@ export const ItemCard = ({ id, name, price, img }) => {
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>{"$" + " " + price}</Card.Text>
-        <Card.Text>{id}</Card.Text>
 
         <Link variant="primary" to={"/detalle/" + id}>
           Ver Producto

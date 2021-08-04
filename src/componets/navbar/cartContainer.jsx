@@ -96,8 +96,8 @@ export const Cart = () => {
             onClick={() => {
               const pedido = {
                 comprador: { ...form },
-                items:  cart ,
-                valor:  total ,
+                items: cart,
+                valor: total,
               };
               console.log(pedido);
             }}

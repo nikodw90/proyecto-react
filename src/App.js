@@ -9,32 +9,30 @@ import { useEffect, useState } from 'react';
 import { Cart } from "./componets/navbar/cartContainer"
 import { firestore } from './firebase';
 
+
 function App() {
 
   const [ fireItems, setFireItems ] = useState([])
     
 
   useEffect(() => {
-
   
    const db = firestore
-   const collection = db.collection('products')
+   const collection = db.collection('Products')
    const response = collection.get()
       response
       .then((result) =>{
          setFireItems(result.docs.map(p => ({id: p.id, ...p.data()})))
-         console.log(fireItems)
+         
       })
 
+   
       
-
   }, [])
-
-
-
 
   return (
         
+   
     <div className="App">
       <ShopProvider>
           <BrowserRouter>
@@ -47,7 +45,7 @@ function App() {
                   <ItemListContainer fireItems={fireItems}/>
                </Route>
                <Route path={ '/detalle/:productId'}>
-                  <ItemDetailContainer items={fireItems}/>
+                  <ItemDetailContainer item={fireItems}/>
                 </Route>
                 <Route path={'/cart'}>
                    <Cart/>

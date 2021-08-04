@@ -2,10 +2,10 @@ import Card from "react-bootstrap/Card";
 import { ButtonContador } from "./itemCount";
 import { useState } from "react";
 
-export const ItemDetail = ({ id, nombre, precio, img, stock }) => {
+export const ItemDetail = ({ id, name, price, img, stock }) => {
   const inicio = [0];
 
-  const product = { id, nombre, img, precio };
+  const product = { id, name, img, price };
   console.log(product);
 
   const [contador, setContador] = useState(inicio);
@@ -27,9 +27,9 @@ export const ItemDetail = ({ id, nombre, precio, img, stock }) => {
       <Card.Img src={img} />
       <Card.Body>
         <Card.Text>{id}</Card.Text>
-        <Card.Title>{nombre}</Card.Title>
+        <Card.Title>{name}</Card.Title>
         <Card.Text>{stock}</Card.Text>
-        <Card.Text>{"$" + precio}</Card.Text>
+        <Card.Text>{"$" + price}</Card.Text>
         <ButtonContador
           product={product}
           sumar={sumar}

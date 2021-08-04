@@ -10,19 +10,13 @@ export const ShopProvider = ({ children }) => {
 
   useEffect(() => {
     let total = 0;
-    // Con el map obtengo el total por producto
     const totals = cart.map((p) => p.precio * p.amount);
-    // Sumo a t el total por producto de cada uno
     totals.map((p) => (total = total + p));
-    // Lo guardo en el estado
     setTotal(total);
-    // Calculo la cantidad de productos
     const cartCantidad = cart.length;
-    // Las guardo en el estado
     setCantidad(cartCantidad);
   }, [cart]);
 
-  // funcion para ver si el producto esta en el carro
   function estaEnCarrito(id) {
     const item = cart.find((p) => p.id === id);
     if (item === undefined) {
@@ -51,7 +45,6 @@ export const ShopProvider = ({ children }) => {
       const carroNuevo = [...carroAntiguo, productoB];
       setCart(carroNuevo);
     } else {
-      // Guardo en el estado cart el producto que eligió y la cantidad
       const newItem = {
         id: product.id,
         nombre: product.nombre,
@@ -70,9 +63,8 @@ export const ShopProvider = ({ children }) => {
   }
 
   function eliminarProducto(id) {
-    // Elimino el producto por Id filtrando y quedandome con todos los que no tienen el id seleccionado
     const newCart = cart.filter((product) => product.id !== id);
-    // Guardo el nuevo carrito
+    
     setCart(newCart);
   }
 
