@@ -3,7 +3,14 @@ import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import CartWidget from '../CartWidget';
 
-
+const categorias = [{
+  categoryId: "infantil",
+  name: "Libros Infantiles"
+},
+{
+  categoryId: "drama",
+  name: "Libros de Drama"
+}]
 
 
 export function MenuComponet() {
@@ -19,10 +26,9 @@ export function MenuComponet() {
              <Nav.Link variant="primary" href="/">Inicio</Nav.Link>
            </Nav.Item>
            <Nav.Item>
-                <Nav.Link variant="primary" href="/">Libros Infantiles</Nav.Link>
-           </Nav.Item>
-           <Nav.Item>
-                <Link to={`/category/categoryId` } >Libros Drama y comedia</Link>
+              { categorias.map( category => <Link to={`/category/${category.categoryId}`}>
+                    <p>{category.name}</p>
+                    </Link>)}
            </Nav.Item>
            <Nav.Item>
              <Link className="cartWidget" to={"/cart"}><img src="./imagenes/widget.png" /><CartWidget/></Link>

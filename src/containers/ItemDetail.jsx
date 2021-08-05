@@ -26,7 +26,6 @@ export const ItemDetail = ({ id, name, price, img, stock }) => {
     <Card style={{ width: "18rem" }}>
       <Card.Img src={img} />
       <Card.Body>
-        <Card.Text>{id}</Card.Text>
         <Card.Title>{name}</Card.Title>
         <Card.Text>{stock}</Card.Text>
         <Card.Text>{"$" + price}</Card.Text>

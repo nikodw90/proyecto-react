@@ -34,9 +34,9 @@ export const ShopProvider = ({ children }) => {
 
       const productoB = {
         id: productoA.id,
-        nombre: productoA.nombre,
+        nombre: productoA.name,
         img: productoA.img,
-        precio: productoA.precio,
+        precio: productoA.price,
         amount: nuevaCantidad,
       };
 
@@ -47,9 +47,9 @@ export const ShopProvider = ({ children }) => {
     } else {
       const newItem = {
         id: product.id,
-        nombre: product.nombre,
+        nombre: product.name,
         img: product.img,
-        precio: product.precio,
+        precio: product.price,
         amount: contador,
       };
       setCart([...cart, newItem]);

@@ -41,7 +41,7 @@ function App() {
                <Route exact path={'/'}>
                   <ItemListContainer fireItems={fireItems}/>
                </Route>
-               <Route exact path={'/detalle/:categoryId'}>
+               <Route exact path={'/category/:categoryId'}>
                   <ItemListContainer fireItems={fireItems}/>
                </Route>
                <Route path={ '/detalle/:productId'}>
