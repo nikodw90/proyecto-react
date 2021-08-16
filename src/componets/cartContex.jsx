@@ -64,7 +64,7 @@ export const ShopProvider = ({ children }) => {
 
   function eliminarProducto(id) {
     const newCart = cart.filter((product) => product.id !== id);
-    
+
     setCart(newCart);
   }
 

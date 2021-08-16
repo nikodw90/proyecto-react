@@ -1,8 +1,10 @@
 import { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
-import { cartContex } from "../cartContex";
 import { Link } from "react-router-dom";
-import { CartItem } from "../CartItem";
+import { cartContex } from "../componets/cartContex";
+import { CartItem } from "../componets/CartItem";
+import { firestore } from "../firebase";
+import "./cartContainer.css";
 
 export const Cart = () => {
   const { cart, limpiarCarrito, total } = useContext(cartContex);
@@ -14,15 +16,15 @@ export const Cart = () => {
   return (
     <div className="cart">
       {cart.length > 0 ? (
-        <h1>Carrito de compras</h1>
+        <h1 className="titulocarrito">Carrito de compras</h1>
       ) : (
         <>
-          <h1>El carrito esta vacio</h1>
+          <h1 className="titulocarrito">El carrito esta vacio</h1>
           <Link to={"/"}>
             <Button
+              className="buttonvolver"
               onClick={limpiarCarrito}
-              variant="contained"
-              color="primary"
+              variant="dark"
             >
               Volver a Comprar
             </Button>
@@ -30,7 +32,7 @@ export const Cart = () => {
         </>
       )}
 
-      <div>
+      <div className="productosc">
         {cart.length > 0 &&
           cart.map((product) => (
             <CartItem
@@ -46,18 +48,13 @@ export const Cart = () => {
 
       {cart.length > 0 && (
         <>
-          <h2>Total Carrito $ {total}</h2>
-          <div>
-            <Button
-              onClick={limpiarCarrito}
-              variant="contained"
-              color="primary"
-            >
+          <h2 className=" total ">Total Carrito $ {total}</h2>
+          <div className="buttons">
+            <Button onClick={limpiarCarrito} variant="dark">
               Vaciar Carrito
             </Button>
             <Button
-              variant="contained"
-              color="primary"
+              variant="info"
               onClick={() => {
                 setPay(true);
               }}
@@ -69,7 +66,7 @@ export const Cart = () => {
       )}
 
       {pay && (
-        <div>
+        <div class="cardpedido">
           <input
             type="text"
             placeholder="Ingresa tu nombre"
@@ -87,25 +84,41 @@ export const Cart = () => {
           <input
             type="tel"
             placeholder="Ingresa tu Telefono"
-            placeholder="Ej: +56987003250"
             onInput={(event) => {
               setForm({ ...form, phone: event.target.value });
             }}
           />
-          <button
+          <Button
             onClick={() => {
               const pedido = {
                 comprador: { ...form },
                 items: cart,
                 valor: total,
               };
+
+              const db = firestore;
+              const collection = db.collection("pedidos");
+              collection.add(pedido).then(({ id }) => {
+                alert("Pedido Enviado, Numero de Orden" + id);
+              });
               console.log(pedido);
             }}
           >
             Enviar Compra
-          </button>
+          </Button>
+          <Button
+            className="botoncerrar"
+            onClick={() => {
+              setPay(false);
+            }}
+            variant="danger"
+          >
+            X
+          </Button>
         </div>
       )}
     </div>
   );
 };
+
+export default Cart;

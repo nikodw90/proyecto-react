@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { firestore } from "../firebase";
-import { ItemList } from "./itemList";
-import "./style.css";
+import { ItemList } from "../componets/itemList";
+import "./ItemListContainer.css";
 
 export const ItemListContainer = ({ fireItems }) => {
   const [items, setItems] = useState([]);
@@ -15,17 +15,16 @@ export const ItemListContainer = ({ fireItems }) => {
       const query = collection.where("categories", "==", categoryId).get();
       query.then((result) => {
         setItems(result.docs.map((p) => ({ id: p.id, ...p.data() })));
-        
       });
     } else {
       setItems(fireItems);
     }
-    
   }, [categoryId, fireItems]);
 
   return (
-
-    <div className="card">{items.length > 0 ? <ItemList productos={items} /> : <h3>...Loading </h3> }</div>
+    <div className="itemlistcontainer">
+      {items.length > 0 ? <ItemList productos={items} /> : <h3>...Loading </h3>}
+    </div>
   );
 };
 

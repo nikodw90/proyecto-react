@@ -1,0 +1,48 @@
+.cart{
+    
+    background: gray;
+}
+.titulocarrito{
+    text-align: center;
+}
+.productosc{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.buttons{
+    margin: 20px;
+    
+}
+.buttons > Button{
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+.total{
+    margin-left: 20px;
+}
+.buttonvolver{
+    margin: 20px;
+}
+.cardpedido{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 300ms ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 200px; 
+    background-color: rgba(0, 0, 0, .6);
+}
+.cardpedido>input{
+    background: rgba(49, 49, 49, 0.692);
+    margin-bottom: 10px;
+    color: white;
+}
+.botoncerrar{
+    margin-top: 10px;
+}

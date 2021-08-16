@@ -1,12 +1,13 @@
 import React from "react";
-import { ItemCard } from "../componets/ItemCard";
+import { ItemCard } from "./ItemCard";
+import "./itemList.css";
 
 export const ItemList = ({ productos }) => {
   return (
     <div>
       {productos.map((producto) => {
         return (
-          <div className="carditemlist">
+          <div className=" carditemlist">
             <ItemCard
               key={producto.id}
               id={producto.id}

@@ -1,0 +1,43 @@
+.navbar{
+    max-width: 100%;
+    position: fixed;
+    background: rgb(146, 146, 146);    
+    left: 0;
+    top: 0;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2)
+
+}
+.categorias{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+}
+.categorias, Link, Button, a {
+    margin: 9px;
+   padding-right: 6px;    
+}
+
+.logo{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    vertical-align: top;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+.logo:hover{
+    filter: blur(1px);
+    transform: rotate(10deg) scale(1);
+}
+
+Link, h1, a{
+    text-decoration: none;
+    color: black;
+}
+Link, h1:hover, a{
+    text-decoration: none;
+    color: white;
+    
+}

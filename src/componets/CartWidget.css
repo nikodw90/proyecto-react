@@ -4,6 +4,10 @@
     justify-content: center;
   }
   
-  .cartWidget a {
-    text-decoration: none;
+  .cartWidget > h6 {
+    position: absolute;
+    background: red;
+    padding: 6px;
+    border-radius: 100%;
+    color: white;
   }

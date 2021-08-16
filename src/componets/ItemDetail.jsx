@@ -1,9 +1,10 @@
 import Card from "react-bootstrap/Card";
 import { ButtonContador } from "./itemCount";
 import { useState } from "react";
+import "./ItemDetail.css";
 
 export const ItemDetail = ({ id, name, price, img, stock }) => {
-  const inicio = [0];
+  const inicio = 0;
 
   const product = { id, name, img, price };
   console.log(product);
@@ -23,19 +24,21 @@ export const ItemDetail = ({ id, name, price, img, stock }) => {
   }
 
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img src={img} />
-      <Card.Body>
-        <Card.Title>{name}</Card.Title>
-        <Card.Text>{stock}</Card.Text>
-        <Card.Text>{"$" + price}</Card.Text>
-        <ButtonContador
-          product={product}
-          sumar={sumar}
-          restar={restar}
-          contador={contador}
-        />
-      </Card.Body>
-    </Card>
+    <div className="carddetail">
+      <Card style={{ width: "18rem" }}>
+        <Card.Img src={img} />
+        <Card.Body>
+          <Card.Title>{name}</Card.Title>
+          <Card.Text>{stock}</Card.Text>
+          <Card.Text>{"$" + price}</Card.Text>
+          <ButtonContador
+            product={product}
+            sumar={sumar}
+            restar={restar}
+            contador={contador}
+          />
+        </Card.Body>
+      </Card>
+    </div>
   );
 };

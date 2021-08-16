@@ -1,0 +1,9 @@
+.itemlistcontainer{
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-left: 30px;
+    
+
+}

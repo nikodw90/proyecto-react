@@ -1,0 +1,8 @@
+.carditemlist{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;  
+    margin-top: 20px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    
+}

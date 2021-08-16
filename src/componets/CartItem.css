@@ -1,0 +1,8 @@
+.divimg > img{
+    height: 100px;
+    width: 90px;
+}
+.divtitle > h5{
+    width: 100px;
+    text-align: center;
+}

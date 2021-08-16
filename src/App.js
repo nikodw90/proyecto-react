@@ -1,12 +1,12 @@
 import './App.css';
-import { MenuComponet } from './componets/navbar';
+import { MenuComponet } from './componets/navbar/NavBar';
 import { ItemListContainer } from "./containers/ItemListContainer"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { ItemDetailContainer } from "./containers/ItemDetailContainer"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 import { ShopProvider } from './componets/cartContex';
 import { useEffect, useState } from 'react';
-import { Cart } from "./componets/navbar/cartContainer"
+import { Cart } from "./containers/cartContainer"
 import { firestore } from './firebase';
 
 

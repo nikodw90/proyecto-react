@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
-import Button from "react-bootstrap/Button";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { cartContex } from "../componets/cartContex";
+import { cartContex } from "./cartContex";
+import "./itemCount.css";
 
 export const ButtonContador = ({ product, sumar, restar, contador }) => {
   const [open, setOpen] = useState(false);
@@ -15,24 +16,35 @@ export const ButtonContador = ({ product, sumar, restar, contador }) => {
 
   return (
     <section>
-      <Button variant="primary" onClick={restar}>
+      <Button
+        className="buttoncount"
+        variant="outline-secondary"
+        onClick={restar}
+      >
         -
       </Button>
       {contador}
-      <Button variant="primary" onClick={sumar}>
+      <Button
+        className="buttoncount"
+        variant="outline-secondary"
+        onClick={sumar}
+      >
         +
       </Button>
 
       {!open ? (
         <div>
-          <Button variant="primary" onClick={() => agregar(product, contador)}>
+          <Button
+            variant="outline-secondary"
+            onClick={() => agregar(product, contador)}
+          >
             Agregar
           </Button>
         </div>
       ) : (
         <div>
           <Link to={"/cart"}>
-            <Button variant="primary">Finalizar Compra</Button>
+            <Button variant="outline-info">Finalizar Compra</Button>
           </Link>
         </div>
       )}
